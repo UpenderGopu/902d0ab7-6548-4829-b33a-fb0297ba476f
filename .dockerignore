@@ -1,0 +1,20 @@
+# ============================================================================
+# .dockerignore - Specifies files and directories to exclude from the Docker
+# build context. This reduces image size and speeds up builds by preventing
+# unnecessary files from being sent to the Docker daemon.
+# ============================================================================
+
+# Exclude Visual Studio temporary files and settings
+**/.vs/
+
+# Exclude compiled output directories (these are rebuilt inside the container)
+**/bin/
+**/obj/
+
+# Exclude Git version control files (not needed in the container)
+**/.git/
+**/.gitignore
+
+# Exclude documentation files (not needed for running the application)
+**/README.md
+**/code-test.md
