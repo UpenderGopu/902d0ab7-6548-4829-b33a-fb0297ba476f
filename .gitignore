@@ -1,0 +1,49 @@
+# =============================================================================
+# .gitignore — Files and folders to exclude from Git version control
+# =============================================================================
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio files and folders
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+# NuGet packages (restored automatically by dotnet restore)
+*.nupkg
+**/[Pp]ackages/*
+
+# Code coverage results
+*.coverage
+*.coveragexml
+coverage.cobertura.xml
+TestResults/
+
+# Tooling and IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Private specification file (do NOT commit)
+code-test.md
