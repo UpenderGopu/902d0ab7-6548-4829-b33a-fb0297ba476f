@@ -1,0 +1,21 @@
+﻿<!-- 
+  LIS.csproj - Project file for the LIS (Longest Increasing Subsequence) console application.
+  This file defines the build configuration, target framework, and project settings.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- OutputType: Exe means this project builds into a console executable (.dll that runs with dotnet CLI) -->
+    <OutputType>Exe</OutputType>
+
+    <!-- TargetFramework: Specifies .NET 8.0 as the runtime version -->
+    <TargetFramework>net8.0</TargetFramework>
+
+    <!-- ImplicitUsings: Automatically includes common namespaces like System, System.Linq, etc. -->
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Nullable: Enables nullable reference type warnings to help prevent null reference exceptions -->
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,54 @@
+<!-- 
+  LIS.Tests.csproj - Project file for the unit test project.
+  This project uses xUnit as the testing framework and references the main LIS project.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- TargetFramework: Must match the main project's framework (net8.0) -->
+    <TargetFramework>net8.0</TargetFramework>
+
+    <!-- ImplicitUsings: Automatically includes common namespaces -->
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Nullable: Enables nullable reference type warnings -->
+    <Nullable>enable</Nullable>
+
+    <!-- IsPackable: false prevents this test project from being published as a NuGet package -->
+    <IsPackable>false</IsPackable>
+
+    <!-- IsTestProject: Tells the .NET SDK this is a test project (enables dotnet test) -->
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <!-- NuGet package dependencies for testing -->
+  <ItemGroup>
+    <!-- coverlet.collector: Collects code coverage data during test runs -->
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+
+    <!-- Microsoft.NET.Test.Sdk: Required platform for running tests with dotnet test -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+
+    <!-- xunit: The xUnit testing framework (provides [Fact], Assert, etc.) -->
+    <PackageReference Include="xunit" Version="2.5.3" />
+
+    <!-- xunit.runner.visualstudio: Allows xUnit tests to run in Visual Studio Test Explorer -->
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <!-- Global using directive so we don't need 'using Xunit;' in every test file -->
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <!-- Reference to the main LIS project so we can test its classes -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\LIS\LIS.csproj" />
+  </ItemGroup>
+
+  <!-- Copy test data files (e.g., large input files) to the output directory for tests to read -->
+  <ItemGroup>
+    <None Include="TestData\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
