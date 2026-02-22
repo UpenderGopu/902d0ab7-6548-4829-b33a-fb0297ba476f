@@ -1,7 +1,7 @@
 # Build stage
 # This is base image for building the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build  
-# Like opening a terminal and typing cd /app. If the folder doesnt exist, it creates it automatically.
+# This sets the working directory to /app
 WORKDIR /app
 
 # Copy solution and project files
@@ -29,7 +29,7 @@ RUN dotnet publish src/LIS/LIS.csproj -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/runtime:8.0 AS runtime
 # This sets the working directory to /app
 WORKDIR /app  
-# Copy files From Stage 1 (named "build"), not from your computer! The folder where we compiled the app in Stage 1 Into the current directory (/app) in this new image
+# Copy files From Stage 1 (named "build"), The folder where we compiled the app in Stage 1 Into the current directory (/app) in this new image
 COPY --from=build /app/publish .  
 # This sets the entry point for the container
 ENTRYPOINT ["dotnet", "LIS.dll"]  

@@ -42,11 +42,11 @@ jobs:
           path: '**/coverage.cobertura.xml'  # This uploads the coverage report to GitHub Actions.
 
   docker:  # This is the name of the job and this is Job 2 (runs ONLY after Job 1 succeeds)
-    runs-on: ubuntu-latest  # GitHub creates the new ubuntu virtual machine in the cloud and runs the job on it
+    runs-on: ubuntu-latest
     needs: build-and-test  # This job depends on the build-and-test job, "Don't even start this job unless Job 1 succeeds"
     permissions:  # This specifies the permissions required for the job
-      packages: write  # This allows the job to write to the GitHub Container Registry
-      contents: read  # This allows the job to read the contents of the repository
+      packages: write
+      contents: read
 
     steps:
       - uses: actions/checkout@v4  
@@ -54,7 +54,7 @@ jobs:
       - name: Log in to GitHub Container Registry   # Logs into ghcr.io (GitHub's Docker image storage) using your automatic GitHub token. This is like logging into Docker Hub, but it's GitHub's own registry. No setup needed — GitHub provides the token automatically.
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Set lowercase repo name   # Converts my repository name to lowercase (e.g., "YourUser/YourRepo" → "youruser/yourrepo"). This is required because Docker image names must be lowercase.
+      - name: Set lowercase repo name
         run: echo "REPO_LC=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Build Docker image   # Builds the Docker image using the Dockerfile in the root directory. The -t flag tags the image with the repository name and :latest tag.
